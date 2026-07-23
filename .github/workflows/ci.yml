@@ -1,0 +1,36 @@
+name: Python Data Science CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install ruff pytest nbstripout pip-audit
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Check for Malicious Dependencies (SCA)
+      run: pip-audit
+
+    - name: Lint and Format Notebooks & Scripts
+      run: ruff check . && ruff format --check .
+
+    - name: Run Unit Tests
+      run: pytest

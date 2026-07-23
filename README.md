@@ -167,3 +167,17 @@ git diff
 ```bash
 git restore filename
 ```
+
+piml-pub/ (Raiz do Repositório)
+├── .gitignore
+├── data/                                 <-- Pasta Central de Dados Brutos (Ignorada pelo Git)
+│   └── FlatVel_A/
+│       ├── data/
+│       │   └── data14.npy                <-- Dado sísmico bruto do OpenFWI
+│       └── model/
+│           └── model14.npy               <-- Modelo de velocidade bruto do OpenFWI
+├── proj-01/                              <-- Projeto anterior (Delta-PINN)
+└── proj-02/                              <-- Projeto Atual
+    ├── data/                             <-- Pasta Local para Outputs (Ignorada pelo Git)
+    │   └── pinn_input_data_model14.npy   <-- Sismograma gerado pelo Deepwave
+    └── pinn_fwi_baseline_model14.ipynb   <-- O seu Notebook de Trabalho

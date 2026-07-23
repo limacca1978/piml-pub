@@ -1,1 +1,14 @@
-proj-01/data_rasht_behesht_2022/
+# Ignorar dados pesados
+data/
+*.npy
+*.h5
+*.mat
+
+# Ignorar lixo do Jupyter e VS Code
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+.vscode/
+
+# Ignorar ambientes virtuais
+project-env/
+.env
