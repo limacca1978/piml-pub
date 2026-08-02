@@ -12,3 +12,6 @@ data/
 # Ignorar ambientes virtuais
 project-env/
 .env
+
+# Ignora todos os notebooks de Due Diligence dentro da pasta proj-02
+proj-02/*due_diligence*.ipynb
